@@ -5,7 +5,7 @@ contract SimpleFund {
     uint private balance;
     address private owner;
     
-   constructor() public {
+    constructor() public {
         balance = 0;
         owner = msg.sender;
     }
