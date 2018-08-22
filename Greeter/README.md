@@ -13,5 +13,5 @@ The name of the person to greet (stored in the blockchain) can be retrieved and 
 
 `ganache-cli` # Run a local ethereum node  
 `truffle migrate --network development` # Deploy the contract  
-Overwrite the contract address in the *index.html* with yours (given by truffe)  
+Overwrite the contract address in the *index.html* with yours (given by truffle)  
 Open *index.html* on browser (you may have to reload the page after setting a new name)
