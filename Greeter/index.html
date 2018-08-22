@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  </head>
+  <body>
+    <h1>Greeter Front-End</h1>
+    <div class="container"> 
+      <h2>Hello <span id="name"></h2>
+      <h2>Set new name</h2>
+      <input id="newname" type="text">
+      <button id="btn_set">Set Name</button>   
+    </div>
+  </body>
+  <script>
+
+    if (typeof web3 !== 'undefined') {
+      web3 = new Web3(web3.currentProvider);
+    } else {
+      web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    }
+        
+    web3.eth.defaultAccount = web3.eth.accounts[0];
+    var contractABI = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getName","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_name","type":"string"}],"name":"setName","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+    var contractAddress = "0x6de015c3b9aac0f21c9a8bd113aa8e9820a46084";
+    var GreeterContract = web3.eth.contract(contractABI);
+    var Greeter = GreeterContract.at(contractAddress);
+    console.log(Greeter);
+   
+    Greeter.getName(function(error, result) {
+      if(!error) {
+        console.log(result);    
+        $('#name').text(result);
+      } else
+        console.error(error);
+      });
+
+    $("#btn_set").click(function() {
+      Greeter.setName($('#newname').val());
+    });     
+    
+   </script>
+</html>
