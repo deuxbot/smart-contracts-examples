@@ -6,11 +6,11 @@ The name of the person to greet (stored in the blockchain) can be retrieved and 
 
 ## Requisites
 
-`npm install -g truffle`
-`npm install -g ganache-cli `
+`npm install -g truffle`  
+`npm install -g ganache-cli `  
 
 ## Usage
 
-`ganache-cli` # Run a local ethereum node
-`truffle migrate --network development` # Deploy the contract
+`ganache-cli` # Run a local ethereum node  
+`truffle migrate --network development` # Deploy the contract  
 Open *index.html* on browser (you may have to reload the page after setting a new name)
